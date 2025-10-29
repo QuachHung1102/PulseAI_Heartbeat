@@ -21,7 +21,12 @@ app.use(express.static(clientDistPath));
 
 app.use('/', rootRouter);
 
-// catch 404 and forward to error handler
+// SPA fallback: send index.html for all unmatched routes (for client-side routing)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientDistPath, 'index.html'));
+});
+
+// catch 404 and forward to error handler (this won't be reached for GET requests due to fallback above)
 app.use(function(req, res, next) {
   next(createError(404));
 });

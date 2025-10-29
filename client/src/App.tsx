@@ -3,6 +3,7 @@ import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import Result from './pages/Result';
+import NotFound from './pages/NotFound';
 
 export default function App() {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ export default function App() {
       <Route path="/" element={<section className="home-gbc" />} />
       <Route path="/home" element={<Home />} />
       <Route path="/result" element={<Result />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
